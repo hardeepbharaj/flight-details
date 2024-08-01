@@ -18,7 +18,7 @@ To run test cases
 `npm test`
 
 
-# Getting Started with Server
+# Getting Started with Client
 
 To install dependencies
 `npm install`
