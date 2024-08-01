@@ -6,24 +6,25 @@
 
 # Getting Started with Server
 
-### `npm install`
+### `To install dependencies`
+npm install
 
-To start the server
-### `npm run dev`
+### `To start the server`
+npm run dev
+Server will start at ### `http://localhost:5000`
 
-Server will start at http://localhost:5000 
+### `To run test cases`
+npm test
 
-To run test cases
-### `npm test`
 
 # Getting Started with Server
 
-### `npm install`
+### `To install dependencies`
+npm install
 
-To start the client
-### `npm run dev`
+### `To start the client`
+npm run dev
+Client will start at ### `http://localhost:3000`
 
-Client will start at http://localhost:3000
-
-To run test cases
-### `npm test`
+### `To run test cases`
+npm test
