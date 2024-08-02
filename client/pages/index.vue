@@ -51,15 +51,14 @@
       const launchesStore = useLaunchesStore();
       const toastStore = useToastStore();
       const { formatDate } = useDateFormatter();
-
-      const limit = 10;
+      const limit = 30;
 
       const pagination = usePagination(limit, (offset: number, limit: number) => {
         launchesStore.fetchLaunches(offset, limit);
       });
 
       onMounted(() => {
-        launchesStore.fetchLaunches();
+        launchesStore.fetchLaunches(0, limit);
       });
 
       const saveLaunch = (launch: LaunchType) => {
