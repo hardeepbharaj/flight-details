@@ -16,11 +16,15 @@ export const getLaunches = async (req: Request, res: Response, next: NextFunctio
       }
     });
 
-    const data = response.data.docs;
-    const total = response.data.totalDocs;
+    const { docs, totalDocs } = response.data;
 
-    res.json(data.length > 0 ? { data, total } : { data: [], total: 0 });
-  } catch (error) {    
+    const responseData = docs.length > 0
+      ? { data: docs, total: totalDocs }
+      : { data: [], total: 0 };
+
+    res.json(responseData);
+  } catch (error) {
+    // have used a global error handler middleware errorHandler.ts
     next(error);
   }
 };
@@ -43,6 +47,7 @@ export const saveLaunch = async (req: Request, res: Response, next: NextFunction
     const response = await launch.save();
     res.status(201).json(response);
   } catch (error) {
+    // have used a global error handler middleware errorHandler.ts
     next(error);
   }
 };
@@ -53,7 +58,6 @@ export const getSavedLaunches = async (req: Request, res: Response, next: NextFu
     const limit = parseInt(req.query.limit as string) || 30;
 
     // This is not optimized way to get count as we calculate the count on each request
-    // to solve this we can use redis or node-cache library to store the count
     const total = await Launch.countDocuments();
 
     const launches = await Launch.find()
@@ -62,6 +66,7 @@ export const getSavedLaunches = async (req: Request, res: Response, next: NextFu
 
     res.json({ data: launches, total });
   } catch (error) {
+    // have used a global error handler middleware errorHandler.ts
     next(error);
   }
 };
@@ -77,6 +82,7 @@ export const deleteLaunch = async (req: Request, res: Response, next: NextFuncti
 
     res.status(204).end();
   } catch (error) {
+    // have used a global error handler middleware errorHandler.ts
     next(error);
   }
 };
