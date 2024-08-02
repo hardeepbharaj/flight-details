@@ -58,7 +58,7 @@
       const { formatDate } = useDateFormatter();
       const limit = 10;
 
-      const pagination = usePagination(limit, (offset, limit) => {
+      const pagination = usePagination(limit, (offset: number, limit: number) => {
         savedLaunchesStore.fetchSavedLaunches(offset, limit);
       });
 
